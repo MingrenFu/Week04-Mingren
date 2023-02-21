@@ -1,0 +1,179 @@
+//
+//  ContentView.swift
+//  MusicPlayer
+//
+
+import SwiftUI
+import AVKit
+import AVFoundation
+
+let bundleAudio = [
+    "Paradise-Island.m4a"
+];
+//
+//let urlSounds = [
+//    "https://www.youraccompanist.com/images/stories/Reference%20Scales_On%20A%20Flat-G%20Sharp.mp3",
+//    "https://www.youraccompanist.com/images/stories/Reference%20Scales_Pentatonic%20on%20F%20Sharp.mp3",
+//    "https://www.youraccompanist.com/images/stories/Reference%20Scales_Chromatic%20Scale%20On%20F%20Sharp.mp3",
+//]
+//
+//func loadUrlAudio(_ urlString:String) -> AVAudioPlayer? {
+//    let url = URL(string: urlString)
+//    do {
+//        let data = try Data(contentsOf: url!)
+//        return try AVAudioPlayer(data: data)
+//    } catch {
+//        print("loadUrlSound error", error)
+//    }
+//    return nil
+//}
+//
+func loadBundleAudio(_ fileName:String) -> AVAudioPlayer? {
+    let path = Bundle.main.path(forResource: fileName, ofType:nil)!
+    let theurl = URL(fileURLWithPath: path)
+    do {
+        return try AVAudioPlayer(contentsOf: theurl)
+    } catch {
+        print("loadBundleAudio error", error)
+    }
+    return nil
+}
+
+
+struct Item : Identifiable {
+  var id = UUID()
+  var urlStr:String
+  var name:String
+}
+
+// Array of image url strings
+let imageArray = [
+  "https://cdn.epidemicsound.com/player/20230221.22-deacc8ab30e1c6ed5ea79ea5566154d9efdb69b6/d70f6dc1c97191b06d091d11f2eb7444-384.jpg",
+  "https://cdn.epidemicsound.com/player/20230221.22-deacc8ab30e1c6ed5ea79ea5566154d9efdb69b6/1c22ce280d7299918461d041a454bea6-384.jpg",
+  "https://cdn.epidemicsound.com/player/20230221.22-deacc8ab30e1c6ed5ea79ea5566154d9efdb69b6/c4e6162ea5f06778552179b53edb4cca-384.jpg",
+  "https://cdn.epidemicsound.com/player/20230221.22-deacc8ab30e1c6ed5ea79ea5566154d9efdb69b6/25f33c6f4a66b3fe05514744af10785e-384.jpg",
+  "https://cdn.epidemicsound.com/player/20230221.22-deacc8ab30e1c6ed5ea79ea5566154d9efdb69b6/5e801a7f24fd69dbed80491a6e641696-384.jpeg",
+  "https://cdn.epidemicsound.com/player/20230221.22-deacc8ab30e1c6ed5ea79ea5566154d9efdb69b6/bcfe69b24690535b14280dcd0ae26f1d-384.jpg",
+]
+
+
+// Read in an image from the array of url strings
+func imageFor( index: Int) -> UIImage {
+  let urlStr = imageArray[index % imageArray.count]
+  return imageFor(string: urlStr)
+}
+
+// Read in an image from a url string
+func imageFor(string str: String) -> UIImage {
+  let url = URL(string: str)
+  let imgData = try? Data(contentsOf: url!)
+  let uiImage = UIImage(data:imgData!)
+  return uiImage!
+}
+
+// Array of image url strings
+let imageItems:[Item] = [
+  Item(urlStr: imageArray[0], name:"Pop"),
+  Item(urlStr: imageArray[1], name:"Film"),
+  Item(urlStr: imageArray[2], name:"Electronic Music"),
+  Item(urlStr: imageArray[3], name:"Jazz"),
+  Item(urlStr: imageArray[4], name:"Hip Hop"),
+  Item(urlStr: imageArray[5], name:"Rock"),
+]
+
+
+
+
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+          List {
+            ForEach(imageItems) { item in
+              NavigationLink( destination: ItemDetail(item: item)) {
+                ItemRow(item: item)
+              }
+            }
+          }
+          .navigationTitle("Genres")
+        }
+    }
+}
+
+struct ItemDetail: View {
+@State var audioPlayer: AVAudioPlayer!
+@State var soundIndex = 0
+@State var soundFile = bundleAudio[0]
+@State var player: AVAudioPlayer? = nil
+    
+  var item:Item
+  var body: some View {
+    VStack {
+      Image(uiImage: imageFor(string: item.urlStr))
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(width:320, height: 320)
+        .cornerRadius(7)
+        .padding(.bottom, 100)
+//      Spacer(minLength: 1)
+        Text(item.name)
+        .font(.title2)
+        .fontWeight(.semibold)
+        .padding(.bottom, 70)
+        
+//play & pause buttons
+        HStack {
+            Spacer()
+            Button(action: {
+                player = loadBundleAudio(soundFile)
+//                player = loadUrlAudio(soundFile)
+                player?.play()
+            }) {
+                Image(systemName: "play.circle.fill").resizable()
+                    .frame(width: 50, height: 50)
+                    .aspectRatio(contentMode: .fit)
+            }
+            Spacer()
+            Button(action: { 
+                player = loadBundleAudio(soundFile)
+//                player = loadUrlAudio(soundFile)
+                player?.pause()
+            }) {
+                Image(systemName: "pause.circle.fill").resizable()
+                    .frame(width: 50, height: 50)
+                    .aspectRatio(contentMode: .fit)
+            }
+            Spacer()
+            Button(action: {
+                self.audioPlayer.pause()
+            }) {
+                Image(systemName: "forward.circle.fill").resizable()
+                    .frame(width: 50, height: 50)
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
+ 
+    }
+    }
+  }
+
+
+struct ItemRow: View {
+  var item:Item
+  var body: some View {
+    HStack {
+      Image(uiImage: imageFor(string: item.urlStr))
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(width:100, height: 100)
+        .cornerRadius(7)
+      Text(item.name)
+      Spacer()
+    }
+  }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
