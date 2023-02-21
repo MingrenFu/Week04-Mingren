@@ -89,14 +89,11 @@ struct ContentView: View {
                         Text("Home")
                 }
             
-                
                 Text("Search Screen")
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                         Text("Search")
                 }
-            
-            
             
                 Text("Profile Screen")
                     .tabItem {
