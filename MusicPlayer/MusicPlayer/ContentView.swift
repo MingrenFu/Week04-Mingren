@@ -8,26 +8,12 @@ import AVKit
 import AVFoundation
 
 let bundleAudio = [
-    "Paradise-Island.mp3"
+    "Paradise-Island.mp3",
+    "Deep-Trailer.mp3"
 ];
+
 //
-//let urlSounds = [
-//    "https://www.youraccompanist.com/images/stories/Reference%20Scales_On%20A%20Flat-G%20Sharp.mp3",
-//    "https://www.youraccompanist.com/images/stories/Reference%20Scales_Pentatonic%20on%20F%20Sharp.mp3",
-//    "https://www.youraccompanist.com/images/stories/Reference%20Scales_Chromatic%20Scale%20On%20F%20Sharp.mp3",
-//]
-//
-//func loadUrlAudio(_ urlString:String) -> AVAudioPlayer? {
-//    let url = URL(string: urlString)
-//    do {
-//        let data = try Data(contentsOf: url!)
-//        return try AVAudioPlayer(data: data)
-//    } catch {
-//        print("loadUrlSound error", error)
-//    }
-//    return nil
-//}
-//
+
 func loadBundleAudio(_ fileName:String) -> AVAudioPlayer? {
     let path = Bundle.main.path(forResource: fileName, ofType:nil)!
     let theurl = URL(fileURLWithPath: path)
@@ -83,27 +69,61 @@ let imageItems:[Item] = [
 
 
 
-
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-          List {
-            ForEach(imageItems) { item in
-              NavigationLink( destination: ItemDetail(item: item)) {
-                ItemRow(item: item)
+        TabView {
+                
+            NavigationView {
+              List {
+                ForEach(imageItems) { item in
+                  NavigationLink( destination: ItemDetail(item: item)) {
+                    ItemRow(item: item)
+                    
+                  }
+                }
               }
+              .navigationTitle("Genres")
             }
-          }
-          .navigationTitle("Genres")
-        }
+                    .tabItem {
+                        Image(systemName: "music.note.house.fill")
+                        Text("Home")
+                }
+            
+                
+                Text("Search Screen")
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                        Text("Search")
+                }
+            
+            
+            
+                Text("Profile Screen")
+                    .tabItem {
+                        Image(systemName: "person.fill")
+                        Text("Profile")
+                }
+            }
+//        NavigationView {
+//          List {
+//            ForEach(imageItems) { item in
+//              NavigationLink( destination: ItemDetail(item: item)) {
+//                ItemRow(item: item)
+//              }
+//            }
+//          }
+//          .navigationTitle("Genres")
+//        }
     }
 }
+
 
 struct ItemDetail: View {
 @State var audioPlayer: AVAudioPlayer!
 @State var soundIndex = 0
 @State var soundFile = bundleAudio[0]
 @State var player: AVAudioPlayer? = nil
+@State var sliderValue : Float = 0.0
     
   var item:Item
   var body: some View {
@@ -116,16 +136,17 @@ struct ItemDetail: View {
         .padding(.bottom, 100)
 //      Spacer(minLength: 1)
         Text(item.name)
-        .font(.title2)
+            .font(.title)
         .fontWeight(.semibold)
-        .padding(.bottom, 70)
-        
+        .padding(.bottom, 30)
+        Slider(value: $sliderValue, in: 0...10)
+            .padding(.horizontal, 25.0)
+            .padding(.bottom, 10)
 //play & pause buttons
         HStack {
             Spacer()
             Button(action: {
-                player = loadBundleAudio(soundFile)
-//                player = loadUrlAudio(soundFile)
+            player = loadBundleAudio(soundFile)
                 player?.play()
             }) {
                 Image(systemName: "play.circle.fill").resizable()
@@ -134,8 +155,7 @@ struct ItemDetail: View {
             }
             Spacer()
             Button(action: {
-                player = loadBundleAudio(soundFile)
-//                player = loadUrlAudio(soundFile)
+            player = loadBundleAudio(soundFile)
                 player?.pause()
             }) {
                 Image(systemName: "pause.circle.fill").resizable()
@@ -143,14 +163,8 @@ struct ItemDetail: View {
                     .aspectRatio(contentMode: .fit)
             }
             Spacer()
-            Button(action: {
-                self.audioPlayer.pause()
-            }) {
-                Image(systemName: "forward.circle.fill").resizable()
-                    .frame(width: 50, height: 50)
-                    .aspectRatio(contentMode: .fit)
-            }
         }
+        .padding(.bottom, 60.0)
  
     }
     }

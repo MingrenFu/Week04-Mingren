@@ -12,6 +12,7 @@
 		70BE044E29A4CDA3008BF35F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70BE044D29A4CDA3008BF35F /* Assets.xcassets */; };
 		70BE045129A4CDA3008BF35F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70BE045029A4CDA3008BF35F /* Preview Assets.xcassets */; };
 		70BE047629A51558008BF35F /* Paradise-Island.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70BE047529A51558008BF35F /* Paradise-Island.mp3 */; };
+		70BE047829A5494A008BF35F /* Deep-Trailer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70BE047729A5494A008BF35F /* Deep-Trailer.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		70BE044D29A4CDA3008BF35F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70BE045029A4CDA3008BF35F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		70BE047529A51558008BF35F /* Paradise-Island.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Paradise-Island.mp3"; path = "../../../../../.Trash/Paradise-Island.mp3"; sourceTree = "<group>"; };
+		70BE047729A5494A008BF35F /* Deep-Trailer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Deep-Trailer.mp3"; path = "../../../../Deep-Trailer.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				70BE045029A4CDA3008BF35F /* Preview Assets.xcassets */,
 				70BE047529A51558008BF35F /* Paradise-Island.mp3 */,
+				70BE047729A5494A008BF35F /* Deep-Trailer.mp3 */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70BE047829A5494A008BF35F /* Deep-Trailer.mp3 in Resources */,
 				70BE045129A4CDA3008BF35F /* Preview Assets.xcassets in Resources */,
 				70BE047629A51558008BF35F /* Paradise-Island.mp3 in Resources */,
 				70BE044E29A4CDA3008BF35F /* Assets.xcassets in Resources */,
