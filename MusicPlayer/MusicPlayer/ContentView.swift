@@ -1,7 +1,5 @@
-//
 //  ContentView.swift
 //  MusicPlayer
-//
 
 import SwiftUI
 import AVKit
@@ -78,7 +76,6 @@ struct ContentView: View {
                 ForEach(imageItems) { item in
                   NavigationLink( destination: ItemDetail(item: item)) {
                     ItemRow(item: item)
-                    
                   }
                 }
               }

@@ -1,7 +1,5 @@
-//
 //  MusicPlayerApp.swift
 //  MusicPlayer
-//
 
 import SwiftUI
 
