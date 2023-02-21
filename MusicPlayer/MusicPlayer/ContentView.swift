@@ -8,7 +8,7 @@ import AVKit
 import AVFoundation
 
 let bundleAudio = [
-    "Paradise-Island.m4a"
+    "Paradise-Island.mp3"
 ];
 //
 //let urlSounds = [
@@ -133,7 +133,7 @@ struct ItemDetail: View {
                     .aspectRatio(contentMode: .fit)
             }
             Spacer()
-            Button(action: { 
+            Button(action: {
                 player = loadBundleAudio(soundFile)
 //                player = loadUrlAudio(soundFile)
                 player?.pause()
