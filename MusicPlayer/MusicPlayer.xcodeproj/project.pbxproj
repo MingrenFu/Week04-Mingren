@@ -10,9 +10,8 @@
 		70BE044A29A4CDA0008BF35F /* MusicPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BE044929A4CD9F008BF35F /* MusicPlayerApp.swift */; };
 		70BE044C29A4CDA0008BF35F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BE044B29A4CDA0008BF35F /* ContentView.swift */; };
 		70BE044E29A4CDA3008BF35F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70BE044D29A4CDA3008BF35F /* Assets.xcassets */; };
-		70BE045129A4CDA3008BF35F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70BE045029A4CDA3008BF35F /* Preview Assets.xcassets */; };
-		70BE047629A51558008BF35F /* Paradise-Island.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70BE047529A51558008BF35F /* Paradise-Island.mp3 */; };
-		70BE047829A5494A008BF35F /* Deep-Trailer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70BE047729A5494A008BF35F /* Deep-Trailer.mp3 */; };
+		70BE047A29A56BDB008BF35F /* Deep-Trailer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70BE047929A56BDB008BF35F /* Deep-Trailer.mp3 */; };
+		70BE047C29A56BF4008BF35F /* Paradise-Island.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 70BE047B29A56BF4008BF35F /* Paradise-Island.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,9 +19,8 @@
 		70BE044929A4CD9F008BF35F /* MusicPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerApp.swift; sourceTree = "<group>"; };
 		70BE044B29A4CDA0008BF35F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		70BE044D29A4CDA3008BF35F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		70BE045029A4CDA3008BF35F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		70BE047529A51558008BF35F /* Paradise-Island.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Paradise-Island.mp3"; path = "../../../../../.Trash/Paradise-Island.mp3"; sourceTree = "<group>"; };
-		70BE047729A5494A008BF35F /* Deep-Trailer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Deep-Trailer.mp3"; path = "../../../../Deep-Trailer.mp3"; sourceTree = "<group>"; };
+		70BE047929A56BDB008BF35F /* Deep-Trailer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Deep-Trailer.mp3"; path = "MusicPlayer/Resource/Deep-Trailer.mp3"; sourceTree = "<group>"; };
+		70BE047B29A56BF4008BF35F /* Paradise-Island.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Paradise-Island.mp3"; path = "MusicPlayer/Resource/Paradise-Island.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +37,8 @@
 		70BE043D29A4CD9F008BF35F = {
 			isa = PBXGroup;
 			children = (
+				70BE047B29A56BF4008BF35F /* Paradise-Island.mp3 */,
+				70BE047929A56BDB008BF35F /* Deep-Trailer.mp3 */,
 				70BE044829A4CD9F008BF35F /* MusicPlayer */,
 				70BE044729A4CD9F008BF35F /* Products */,
 			);
@@ -58,19 +58,8 @@
 				70BE044929A4CD9F008BF35F /* MusicPlayerApp.swift */,
 				70BE044B29A4CDA0008BF35F /* ContentView.swift */,
 				70BE044D29A4CDA3008BF35F /* Assets.xcassets */,
-				70BE044F29A4CDA3008BF35F /* Preview Content */,
 			);
 			path = MusicPlayer;
-			sourceTree = "<group>";
-		};
-		70BE044F29A4CDA3008BF35F /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				70BE045029A4CDA3008BF35F /* Preview Assets.xcassets */,
-				70BE047529A51558008BF35F /* Paradise-Island.mp3 */,
-				70BE047729A5494A008BF35F /* Deep-Trailer.mp3 */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,9 +120,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70BE047829A5494A008BF35F /* Deep-Trailer.mp3 in Resources */,
-				70BE045129A4CDA3008BF35F /* Preview Assets.xcassets in Resources */,
-				70BE047629A51558008BF35F /* Paradise-Island.mp3 in Resources */,
+				70BE047A29A56BDB008BF35F /* Deep-Trailer.mp3 in Resources */,
+				70BE047C29A56BF4008BF35F /* Paradise-Island.mp3 in Resources */,
 				70BE044E29A4CDA3008BF35F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
